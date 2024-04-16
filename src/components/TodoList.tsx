@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Todo, removeTodo } from '../redux/actions/todoActions';
 import { AppState } from '../types';
+import Button from './Button/Button';
 
 interface TodoListProps {
   todos: Todo[];
@@ -9,7 +10,11 @@ interface TodoListProps {
 }
 
 const TodoList: React.FC<TodoListProps> = ({ todos, removeTodo }) => {
+  const  handleClick = ()=>{
+    alert("samisas")
+  }
   return (
+    <div>
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
@@ -18,6 +23,10 @@ const TodoList: React.FC<TodoListProps> = ({ todos, removeTodo }) => {
         </li>
       ))}
     </ul>
+    <Button onClick={handleClick}>
+  Click me
+</Button>
+    </div>
   );
 };
 
