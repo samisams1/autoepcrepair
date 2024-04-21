@@ -70,7 +70,7 @@ const AdminSidebarComponent: React.FC = () => {
               &#9658;
             </ArrowIcon>
           </ArrowIconWrapper>
-          <MenuLink to="/user">Users</MenuLink>
+          <MenuLink to="/users">Users</MenuLink>
         </MenuItem>
         <MenuItem>
           <ArrowIconWrapper>

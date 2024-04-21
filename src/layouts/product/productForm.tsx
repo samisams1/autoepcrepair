@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
 interface CategoryFormProps {
@@ -14,13 +14,13 @@ interface Category {
   date: string;
   price: number;
   description:string;
-  imageurl:string;
 
 }
 
 const ProductForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
-  const [category, setCategory] = useState<Category>({ name: '',subcategoryId:15,type:'',language:'',region:'',date:'2024-04-18',price:0 ,description:'',imageurl:'image.jpg'});
+  const [category, setCategory] = useState<Category>({ name: '',subcategoryId:15,type:'',language:'',region:'',date:'2024-04-18',price:0 ,description:''});
   const [successMessage, setSuccessMessage] = useState(false);
+  const [imagePreview, setImagePreview] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
@@ -40,7 +40,16 @@ const ProductForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
       setSuccessMessage(false);
     }, 5000);
   };
+  const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    setCategory((prevCategory) => ({ ...prevCategory, imageurl: file }));
 
+    // Create a preview URL for the selected image file
+    if (file) {
+      const previewURL = URL.createObjectURL(file);
+      setImagePreview(previewURL);
+    }
+  };
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit}>
@@ -110,13 +119,13 @@ const ProductForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
             required
           />
            <InputLabel>image:</InputLabel>
-          <TextInput
-            type="text"
-            name="imageurl"
-            value={category.imageurl}
-            onChange={handleInputChange}
-            required
-          />
+        <input
+          type="file"
+          name="imageurl"
+          onChange={handleFileInputChange}
+          required
+        />
+        {imagePreview && <img src={imagePreview} alt="Preview" style={{ maxWidth: '200px', maxHeight: '200px' }} />}
           {successMessage && <SuccessMessage>Product Created  successfully!</SuccessMessage>}
         </InputContainer>
         <SubmitButton type="submit">Submit</SubmitButton>

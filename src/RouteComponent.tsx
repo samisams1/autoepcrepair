@@ -13,8 +13,12 @@ import Register from './pages/registration/register';
 import Login from './pages/login/login';
 import Carts from './pages/CategoryPage/carts';
 import Order from './pages/order/order';
+import Categories from './pages/CategoryPage/category';
+import SubCategory from './pages/admin/subCategory/subCategory';
+import Product from './pages/admin/product/product';
+import Users from './pages/user/user';
 
-interface Product {
+interface ProductInterface {
   id: number;
   name: string;
   type: string | null;
@@ -33,10 +37,10 @@ interface Subcategory {
   categoryId: number;
   createdAt: string;
   updatedAt: string;
-  products: Product[];
+  products: ProductInterface[];
 }
 
-interface Category {
+export interface Category {
   id:number;
   subcategoryName:string;
   name: string;
@@ -123,8 +127,20 @@ const RouteComponent: React.FC = () => {
       element: <Carts />,
     },
     {
+      path: '/users',
+      element: <Users />,
+    },
+    {
       path: '/createCategory',
       element: <CreateCategory />,
+    },
+    {
+      path: '/category',
+      element: <Categories />,
+    },
+    {
+      path: '/subcategory',
+      element: <SubCategory />,
     },
     {
       path: '/createSubCategory',
@@ -133,6 +149,10 @@ const RouteComponent: React.FC = () => {
     {
       path: '/createProduct',
       element: <CreateProduct />,
+    },
+    {
+      path: '/product',
+      element: <Product />,
     },
     {
       path: '/createOrder',

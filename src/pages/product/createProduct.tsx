@@ -26,7 +26,11 @@ const MainContentWrapper = styled.div`
 const CreateProduct = () => {
     const handleSubmit = async (category: any) => {
         try {
-          const response = await axios.post('http://localhost:4000/product/create', category);
+          const response = await axios.post('http://localhost:4000/product/create', category, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

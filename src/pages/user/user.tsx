@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import axios from 'axios';
-import Button from '../../components/Button/Button';
-import Footer from '../../layouts/Footer/footer';
-import Banner from '../HomePage/Banner';
-import SearchComponent from '../../layouts/Search/Search';
-import SidebarComponent from '../../layouts/Sidebar';
 import { PageHeaderComponent } from '../../layouts/PageHeader';
+import SidebarComponent from '../../layouts/Sidebar';
+import SearchComponent from '../../layouts/Search/Search';
+import Banner from '../HomePage/Banner';
+import Footer from '../../layouts/Footer/footer';
+import Button from '../../components/Button/Button';
+// Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
   secondaryColor: '#b4b9db', // Black color
@@ -36,15 +37,18 @@ const Table = styled.table`
 `;
 
 interface Category {
-  price: string;
+  name: string;
+  type: string;
+  region: string;
+  price: number;
 }
-const Orders = () => {
+const Users = () => {
     const [categoryData, setCategoryData] = useState<Category[]>([]);
 
     useEffect(() => {
         const fetchOrder = async () => {
           try {
-            const response = await axios.get('http://localhost:4000/orders');
+            const response = await axios.get('http://localhost:4000/Category');
             console.log(response.data); // You can handle the order data as needed
             setCategoryData(response.data);
           } catch (error) {
@@ -74,12 +78,18 @@ const Orders = () => {
             <thead>
               <tr>
                 <th>Name</th>
+                <th>Type</th>
+                <th>Region</th>
+                <th>Price</th>
                 <th>Edit</th>
               </tr>
             </thead>
             <tbody>
               {categoryData.map((category) => (
-                <tr key={category.price}>
+                <tr key={category.name}>
+                  <td>{category.name}</td>
+                  <td>{category.type}</td>
+                  <td>{category.region}</td>
                   <td>{category.price}</td>
                   <td><Button onClick={handleClick}>Edit</Button></td>
                 </tr>
@@ -93,5 +103,4 @@ const Orders = () => {
   );
 };
 
-
-export default Orders;
+export default Users;
