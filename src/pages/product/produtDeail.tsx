@@ -5,7 +5,7 @@ import { PageHeaderComponent } from '../../layouts/PageHeader';
 import SidebarComponent from '../../layouts/Sidebar';
 import Footer from '../../layouts/Footer/footer';
 import Banner from '../HomePage/Banner';
-import Item from './Item';
+import Item from '../ItemPage/Item';
 import { useLocation } from 'react-router-dom';
 
 // Define the theme colors
@@ -31,19 +31,9 @@ export interface ItemPageProps {
   categories?: Category;
 }
 
-export interface Product {
-  id: string;
-  name: string;
-  decription: string;
-  language: string;
-  region: string;
-  date: string;
-  price: number;
-  imageurl:string;
-}
-const ItemPage: React.FC<ItemPageProps> = ({ categories }) => {
+const ProductPage: React.FC<ItemPageProps> = ({ categories }) => {
   const location = useLocation();
-  const product = location.state as Product;
+  const { state: product } = location;
   return (
     <ThemeProvider theme={theme}>
       <PageHeaderComponent />
@@ -53,6 +43,7 @@ const ItemPage: React.FC<ItemPageProps> = ({ categories }) => {
           <SearchComponent />
           <Banner />
         <Item product = {product}/>
+        dddddddddd
         </MainContentWrapper>
     </Content>
       <Footer/>
@@ -60,5 +51,4 @@ const ItemPage: React.FC<ItemPageProps> = ({ categories }) => {
   );
 };
 
-export default ItemPage;
-
+export default ProductPage;

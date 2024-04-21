@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router-dom';
 import axios, { AxiosResponse } from 'axios';
+import AdminSidebarComponent from './adminSidebar';
 
 // Define the theme colors
 const theme = {
@@ -130,8 +131,8 @@ const SidebarComponent: React.FC = () => {
                 {category.subcategories.map((submenu, subIndex) => (
                   <MenuItem key={subIndex}>
                     <MenuLink
-                      to={`/${category.name.toLowerCase().replace(' ', '-')}/submenu${
-                        subIndex + 1
+                      to={`/${category.name.toLowerCase().replace(' ', '-')}/${
+                        submenu.name.toLowerCase().replace(' ', '-')
                       }`}
                     >
                       {submenu.name}
@@ -142,7 +143,9 @@ const SidebarComponent: React.FC = () => {
             )}
           </React.Fragment>
         ))}
+        <AdminSidebarComponent/>
       </Sidebar>
+      
     </ThemeProvider>
   );
 };
