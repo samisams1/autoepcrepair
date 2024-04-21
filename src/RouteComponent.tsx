@@ -75,7 +75,7 @@ const RouteComponent: React.FC = () => {
   
       // Extract products from subcategories and combine into a single array
       const categoryProducts = category.subcategories.reduce(
-        (allProducts: Product[], subcategory: Subcategory) => [...allProducts, ...subcategory.products],
+        (allProducts: ProductInterface[], subcategory: Subcategory) => [...allProducts, ...subcategory.products],
         []
       );
   
