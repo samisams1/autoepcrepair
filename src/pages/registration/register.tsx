@@ -25,8 +25,9 @@ const MainContentWrapper = styled.div`
 
 const Register = () => {
     const handleSubmit = async (category: any) => {
+      console.log(category)
         try {
-          const response = await axios.post('http://localhost:4000/subCategory/create', category);
+          const response = await axios.post('http://localhost:4000/users/create', category);
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

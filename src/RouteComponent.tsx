@@ -15,8 +15,8 @@ import Carts from './pages/CategoryPage/carts';
 import Order from './pages/order/order';
 import Categories from './pages/CategoryPage/category';
 import SubCategory from './pages/admin/subCategory/subCategory';
-import Product from './pages/admin/product/product';
 import Users from './pages/user/user';
+import Products from './pages/admin/product/products';
 
 interface ProductInterface {
   id: number;
@@ -54,7 +54,7 @@ const RouteComponent: React.FC = () => {
   
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [categories]);
   const fetchCategories = async (): Promise<void> => {
     try {
       const response = await fetch('http://localhost:4000/category');
@@ -152,7 +152,7 @@ const RouteComponent: React.FC = () => {
     },
     {
       path: '/product',
-      element: <Product />,
+      element: <Products />,
     },
     {
       path: '/createOrder',

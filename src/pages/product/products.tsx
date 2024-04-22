@@ -77,6 +77,7 @@ interface  productProps {
 }
 const Product: React.FC<productProps> = ({ subcategoryNameUrl,category }) => {
     const [subcategory, setSubcategory] = useState<Subcategory | null>(null);
+
     useEffect(() => {
         const fetchSubcategory = async () => {
           try {
@@ -91,7 +92,10 @@ const Product: React.FC<productProps> = ({ subcategoryNameUrl,category }) => {
     
         fetchSubcategory();
       }, [subcategoryNameUrl,category]);
-    
+      
+    console.log("clop")
+    console.log(subcategoryNameUrl)
+    console.log(subcategory)
       if (!subcategory) {
         return <div>Loading...</div>;
       }
@@ -102,6 +106,7 @@ const Product: React.FC<productProps> = ({ subcategoryNameUrl,category }) => {
       <Table>
           <thead>
             <tr>
+            <TableHeaderCell>image</TableHeaderCell>
               <TableHeaderCell>Name</TableHeaderCell>
               <TableHeaderCell>Type</TableHeaderCell>
               <TableHeaderCell>Language</TableHeaderCell>
@@ -117,6 +122,7 @@ const Product: React.FC<productProps> = ({ subcategoryNameUrl,category }) => {
     <TableCell width="100px">
       <Link to={`/productDetail/${product.id}`} state={product}>{product.name}</Link>
     </TableCell>
+    <TableCell>{product.name}</TableCell>
     <TableCell>{product.type}</TableCell>
     <TableCell>{product.language}</TableCell>
     <TableCell>{product.region}</TableCell>

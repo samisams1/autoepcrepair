@@ -28,7 +28,7 @@ const Cabinet: React.FC = () => {
       <CabinetWrapper>
         <Title>Cabinet</Title>
         <Content>
-          <Link to="/signin">Sign In</Link>
+          <Link to="/login">Sign In</Link>
           {' | '}
           <Link to="/register">Register</Link>
         </Content>

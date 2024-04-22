@@ -6,11 +6,13 @@ interface CategoryFormProps {
 }
 
 interface Category {
-  name: string;
+  fullName: string;
+  email:string;
+  password:string;
 }
 
 const RegistrationForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
-  const [category, setCategory] = useState<Category>({ name: '' });
+  const [category, setCategory] = useState<Category>({ fullName: '',email: '',password: '' });
   const [successMessage, setSuccessMessage] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,7 @@ const RegistrationForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (category.name.trim() === '') {
+    if (category.fullName.trim() === '') {
       // Handle validation error
       return;
     }
@@ -34,15 +36,31 @@ const RegistrationForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
     <FormContainer>
       <Form onSubmit={handleSubmit}>
         <InputContainer>
-          <InputLabel>Name:</InputLabel>
+          <InputLabel>Full Name:</InputLabel>
           <TextInput
             type="text"
-            name="name"
-            value={category.name}
+            name="fullName"
+            value={category.fullName}
             onChange={handleInputChange}
             required
           />
-          {successMessage && <SuccessMessage>Category added successfully!</SuccessMessage>}
+                   <InputLabel>Email:</InputLabel>
+           <TextInput
+            type="text"
+            name="email"
+            value={category.email}
+            onChange={handleInputChange}
+            required
+          />
+                   <InputLabel>Password:</InputLabel>
+           <TextInput
+            type="text"
+            name="password"
+            value={category.password}
+            onChange={handleInputChange}
+            required
+          />
+          {successMessage && <SuccessMessage>Registered successfully!</SuccessMessage>}
         </InputContainer>
         <SubmitButton type="submit">Register</SubmitButton>
       </Form>

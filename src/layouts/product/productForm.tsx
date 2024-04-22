@@ -18,7 +18,7 @@ interface Category {
 }
 
 const ProductForm: React.FC<CategoryFormProps> = ({ onSubmit }) => {
-  const [category, setCategory] = useState<Category>({ name: '',subcategoryId:15,type:'',language:'',region:'',date:'2024-04-18',price:0 ,description:''});
+  const [category, setCategory] = useState<Category>({ name: '',subcategoryId:1,type:'',language:'',region:'',date:'2024-04-18',price:0 ,description:''});
   const [successMessage, setSuccessMessage] = useState(false);
   const [imagePreview, setImagePreview] = useState('');
 

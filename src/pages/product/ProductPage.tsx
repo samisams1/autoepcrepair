@@ -66,7 +66,8 @@ console.log("sadgur")
   const segments = pathname.split('/').filter(segment => segment !== '');
   const category = segments[0];
   const subcategoryNameUrl = segments[1];
-  console.log(category)
+  console.log(subcategoryNameUrl)
+  console.log("subcategoryNameUrl")
   return (
     <ThemeProvider theme={theme}>
       <PageHeaderComponent />

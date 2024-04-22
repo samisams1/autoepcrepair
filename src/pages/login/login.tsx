@@ -26,7 +26,7 @@ const MainContentWrapper = styled.div`
 const Login = () => {
     const handleSubmit = async (category: any) => {
         try {
-          const response = await axios.post('http://localhost:4000/login', category);
+          const response = await axios.post('http://localhost:4000/auth/login', category);
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import imge1 from '../../assets/screen/hesston-epsilon.png';
 import { Product } from './ItemPage';
 import CartContext from '../../redux/context/CartContext';
 const WrapperItem = styled.div`
@@ -59,6 +58,7 @@ const Item: React.FC<ItemProps> = ({ product }) => {
   const [isMaximized, setIsMaximized] = useState(false);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
+    const imageUrl = 'http://localhost:4000/';
 
   const handleImageClick = () => {
     setIsMaximized(!isMaximized);
@@ -84,7 +84,7 @@ const Item: React.FC<ItemProps> = ({ product }) => {
         </FirstColumn>
         <SecondColumn>
           <ImageColumn isMaximized={isMaximized} onClick={handleImageClick}>
-            <Image src={imge1} alt="Sample Image" />
+            <Image src={`${imageUrl}${product.imageurl}`} alt={product.name}/>
           </ImageColumn>
           <Button onClick={handleAddToCart}>Buy</Button>
         </SecondColumn>

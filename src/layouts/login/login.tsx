@@ -47,7 +47,6 @@ const LoginForm: React.FC<UserFormProps> = ({ onSubmit }) => {
             onChange={handleInputChange}
             required
           />
-          {successMessage && <SuccessMessage>Category added successfully!</SuccessMessage>}
         </InputContainer>
         <InputContainer>
           <InputLabel>password:</InputLabel>
@@ -58,7 +57,7 @@ const LoginForm: React.FC<UserFormProps> = ({ onSubmit }) => {
             onChange={handleInputChange}
             required
           />
-          {successMessage && <SuccessMessage>Category added successfully!</SuccessMessage>}
+          {successMessage && <SuccessMessage>LogIn successfully!</SuccessMessage>}
         </InputContainer>
         <SubmitButton type="submit">Login</SubmitButton>
       </Form>

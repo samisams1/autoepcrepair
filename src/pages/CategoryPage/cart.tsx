@@ -50,6 +50,7 @@ const CartPage: React.FC = () => {
     });
     setCartItems(updatedCartItems);
   };
+  const imageUrl = 'http://localhost:4000/';
 
   return (
     <CartContainer>
@@ -57,7 +58,8 @@ const CartPage: React.FC = () => {
       {cartItems.map((item) => (
         <CartItem key={item.id}>
           <ItemRow>
-            <ItemImage src={item.imageurl} alt={item.name} />
+            
+            <ItemImage src = {`${imageUrl}${item.imageurl}`} alt={item.name} />
             <ItemDetails>
              <Link to={`/productDetail/${item.id}`} state={item}>{item.name}</Link>
               <PriceQuantityContainer>
@@ -136,7 +138,7 @@ const ItemRow = styled.div`
 `;
 
 const ItemImage = styled.img`
-  width: 100px;
+  width: 50px;
   height: auto;
   margin-right: 20px;
 
