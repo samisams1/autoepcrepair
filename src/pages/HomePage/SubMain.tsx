@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Cabinet from '../../layouts/LeftSide/Cabinet';
 import ImportantInfo from '../../layouts/LeftSide/importnamtInfo';
-import TableContent from '../../layouts/LeftSide/MainContent';
+import SubMenuDetail from './SubMenuDetail';
 
 
 
@@ -31,7 +31,7 @@ const SubMain = () => {
     <SubMainWrapper>
       <LeftColumn>
       <Title>Samismas</Title>
-      <TableContent/>
+      <SubMenuDetail/>
       </LeftColumn>
       <RightColumn>
         <Cabinet/>

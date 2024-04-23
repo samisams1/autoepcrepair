@@ -44,6 +44,7 @@ export interface ItemPageProps {
 export interface ProductInt {
   id: number;
   name: string;
+  description:string;
   type: string | null;
   language: string | null;
   region: string | null;

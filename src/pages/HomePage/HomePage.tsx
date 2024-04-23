@@ -1,11 +1,11 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Banner from './Banner';
-import SubMain from './SubMain';
 import SearchComponent from '../../layouts/Search/Search';
 import { PageHeaderComponent } from '../../layouts/PageHeader';
 import SidebarComponent from '../../layouts/Sidebar';
 import Footer from '../../layouts/Footer/footer';
+import SubMenu from './SubMain';
 
 // Define the theme colors
 const theme = {
@@ -32,7 +32,7 @@ const HomePage = () => {
         <MainContentWrapper>
           <SearchComponent />
           <Banner />
-          <SubMain />
+          <SubMenu />
         </MainContentWrapper>
     </Content>
       <Footer/>

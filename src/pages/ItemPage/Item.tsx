@@ -58,7 +58,8 @@ const Item: React.FC<ItemProps> = ({ product }) => {
   const [isMaximized, setIsMaximized] = useState(false);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
-    const imageUrl = 'http://localhost:4000/';
+   // const imageUrl = 'http://localhost:4000/';
+    const imageUrl='https://test2.nilesoftdemo.com/';
 
   const handleImageClick = () => {
     setIsMaximized(!isMaximized);
