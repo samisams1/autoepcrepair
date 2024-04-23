@@ -1,12 +1,12 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import axios from 'axios';
 import Footer from '../../layouts/Footer/footer';
 import Banner from '../HomePage/Banner';
 import SearchComponent from '../../layouts/Search/Search';
 import { PageHeaderComponent } from '../../layouts/PageHeader';
 import SidebarComponent from '../../layouts/Sidebar';
 import LoginForm from '../../layouts/login/login';
+import api from '../../api';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -26,7 +26,7 @@ const MainContentWrapper = styled.div`
 const Login = () => {
     const handleSubmit = async (category: any) => {
         try {
-          const response = await axios.post('http://localhost:4000/auth/login', category);
+          const response = await api.post('/auth/login', category);
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

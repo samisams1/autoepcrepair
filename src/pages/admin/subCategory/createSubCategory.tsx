@@ -5,8 +5,8 @@ import { PageHeaderComponent } from '../../../layouts/PageHeader';
 import SidebarComponent from '../../../layouts/Sidebar';
 import SearchComponent from '../../../layouts/Search/Search';
 import Banner from '../../HomePage/Banner';
-import axios from 'axios';
 import SubCategoryForm from '../../../layouts/subCategory/subCategoryForm';
+import api from '../../../api';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -26,7 +26,7 @@ const MainContentWrapper = styled.div`
 const CreateSubCategory = () => {
     const handleSubmit = async (category: any) => {
         try {
-          const response = await axios.post('http://localhost:4000/subCategory/create', category);
+          const response = await api.post('/subCategory/create', category);
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

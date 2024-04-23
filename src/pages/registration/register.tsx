@@ -1,12 +1,12 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import axios from 'axios';
 import Footer from '../../layouts/Footer/footer';
 import Banner from '../HomePage/Banner';
 import SearchComponent from '../../layouts/Search/Search';
 import { PageHeaderComponent } from '../../layouts/PageHeader';
 import SidebarComponent from '../../layouts/Sidebar';
 import RegistrationForm from '../../layouts/register/registerForm';
+import api from '../../api';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -27,7 +27,7 @@ const Register = () => {
     const handleSubmit = async (category: any) => {
       console.log(category)
         try {
-          const response = await axios.post('http://localhost:4000/users/create', category);
+          const response = await api.post('/users/create', category);
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

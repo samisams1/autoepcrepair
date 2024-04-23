@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import axios from 'axios';
 import { PageHeaderComponent } from '../../layouts/PageHeader';
 import SidebarComponent from '../../layouts/Sidebar';
 import SearchComponent from '../../layouts/Search/Search';
 import Banner from '../HomePage/Banner';
 import Footer from '../../layouts/Footer/footer';
 import Button from '../../components/Button/Button';
+import api from '../../api';
+import Spinner from '../../components/spinner';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -36,21 +37,20 @@ const Table = styled.table`
   }
 `;
 
-interface Category {
-  name: string;
-  type: string;
-  region: string;
-  price: number;
+export interface User {
+  id:number;
+  fullName: string;
+  email: string;
 }
 const Users = () => {
-    const [categoryData, setCategoryData] = useState<Category[]>([]);
+    const [userData, setUserData] = useState<User[]>([]);
 
     useEffect(() => {
         const fetchOrder = async () => {
           try {
-            const response = await axios.get('http://localhost:4000/Category');
+            const response = await api.get('/users');
             console.log(response.data); // You can handle the order data as needed
-            setCategoryData(response.data);
+            setUserData(response.data);
           } catch (error) {
             console.error(error);
           }
@@ -59,8 +59,8 @@ const Users = () => {
         fetchOrder();
       }, []);
       
-      if (categoryData.length === 0) {
-        return <div>Loading order data...</div>;
+      if (userData.length === 0) {
+        return <div><Spinner/></div>;
       }
       const handleClick = () =>{
         alert("clicked")
@@ -77,20 +77,18 @@ const Users = () => {
           <Table>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Region</th>
-                <th>Price</th>
-                <th>Edit</th>
+                <th>Ful NAme</th>
+                <th>Email</th>
+                <th>status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {categoryData.map((category) => (
-                <tr key={category.name}>
-                  <td>{category.name}</td>
-                  <td>{category.type}</td>
-                  <td>{category.region}</td>
-                  <td>{category.price}</td>
+              {userData.map((user) => (
+                <tr key={user.id}>
+                  <td>{user.fullName}</td>
+                  <td>{user.email}</td>
+                  <td>Active</td>
                   <td><Button onClick={handleClick}>Edit</Button></td>
                 </tr>
               ))}

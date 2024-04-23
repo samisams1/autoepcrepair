@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { Link } from 'react-router-dom';
-import axios, { AxiosResponse } from 'axios';
+import  { AxiosResponse } from 'axios';
 import AdminSidebarComponent from './adminSidebar';
+import api from '../../api';
 
 // Define the theme colors
 const theme = {
@@ -84,7 +85,7 @@ const SidebarComponent: React.FC = () => {
 
   const fetchCategories = async () => {
     try {
-      const response: AxiosResponse<Category[]> = await axios.get<Category[]>('http://localhost:4000/category');
+      const response: AxiosResponse<Category[]> = await api.get<Category[]>('/category');
       const formattedCategories: Category[] = response.data.map((category) => ({
         ...category,
         subcategories: category.subcategories.map((subcategory) => ({

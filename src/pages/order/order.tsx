@@ -8,14 +8,14 @@ import Banner from '../HomePage/Banner';
 import SearchComponent from '../../layouts/Search/Search';
 import { Heading } from '../../layouts/common/common';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../../api';
 
 const Order = () => {
   const { id } = useParams();
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/orders/1');
+        const response = await api.get('/orders/1');
         console.log(response.data); // You can handle the order data as needed
       } catch (error) {
         console.error(error);

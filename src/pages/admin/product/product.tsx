@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import axios from 'axios';
 import Banner from '../../HomePage/Banner';
 import SearchComponent from '../../../layouts/Search/Search';
 import SidebarComponent from '../../../layouts/Sidebar';
 import { PageHeaderComponent } from '../../../layouts/PageHeader';
 import Button from '../../../components/Button/Button';
 import Footer from '../../../layouts/Footer/footer';
+import api from '../../../api';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -48,7 +48,7 @@ const Product = () => {
     useEffect(() => {
         const fetchOrder = async () => {
           try {
-            const response = await axios.get('http://localhost:4000/Category');
+            const response = await api.get('/Category');
             console.log(response.data); // You can handle the order data as needed
             setCategoryData(response.data);
           } catch (error) {

@@ -6,7 +6,7 @@ import SidebarComponent from '../../../layouts/Sidebar';
 import SearchComponent from '../../../layouts/Search/Search';
 import Banner from '../../HomePage/Banner';
 import CategoryForm from '../../../layouts/category/categoryForm';
-import axios from 'axios';
+import api from '../../../api';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -26,7 +26,7 @@ const MainContentWrapper = styled.div`
 const HomePage = () => {
     const handleSubmit = async (category: any) => {
         try {
-          const response = await axios.post('http://localhost:4000/category/createCategory', category);
+          const response = await api.post('/category/createCategory', category);
           console.log(response.data);
         } catch (error:any) {
           console.error(error.response.data);

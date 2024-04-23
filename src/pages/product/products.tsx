@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import Cabinet from '../../layouts/LeftSide/Cabinet';
 import ImportantInfo from '../../layouts/LeftSide/importnamtInfo';
 import { Subcategory } from './ProductPage';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Heading } from '../../layouts/common/common';
+import api from '../../api';
 
 
 
@@ -81,8 +81,8 @@ const Product: React.FC<productProps> = ({ subcategoryNameUrl,category }) => {
     useEffect(() => {
         const fetchSubcategory = async () => {
           try {
-            const response = await axios.get<Subcategory>(
-              `http://localhost:4000/subCategory/${subcategoryNameUrl}`
+            const response = await api.get<Subcategory>(
+              `/subCategory/${subcategoryNameUrl}`
             );
             setSubcategory(response.data);
           } catch (error) {

@@ -5,8 +5,8 @@ import Banner from '../HomePage/Banner';
 import SearchComponent from '../../layouts/Search/Search';
 import SidebarComponent from '../../layouts/Sidebar';
 import { PageHeaderComponent } from '../../layouts/PageHeader';
-import axios from 'axios';
 import ProductForm from '../../layouts/product/productForm';
+import api from '../../api';
 // Define the theme colors
 const theme = {
   primaryColor: '#030E4F', // Golden color
@@ -26,7 +26,7 @@ const MainContentWrapper = styled.div`
 const CreateProduct = () => {
     const handleSubmit = async (category: any) => {
         try {
-          const response = await axios.post('http://localhost:4000/product/create', category, {
+          const response = await api.post('/product/create', category, {
             headers: {
               'Content-Type': 'multipart/form-data',
             },

@@ -57,7 +57,7 @@ const RouteComponent: React.FC = () => {
   }, [categories]);
   const fetchCategories = async (): Promise<void> => {
     try {
-      const response = await fetch('http://localhost:4000/category');
+      const response = await fetch('http://test2.nilesoftdemo.com/category');
       const data = await response.json();
       const populatedCategories = data.map((category: Category) => ({
         id: category.id,
