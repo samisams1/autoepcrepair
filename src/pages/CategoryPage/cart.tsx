@@ -4,7 +4,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import CartContext, { CartContextProps } from '../../redux/context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import axios from 'axios';
+import api from '../../api';
 interface OrderData {
   productId: string;
   price: number;
@@ -26,7 +26,7 @@ const CartPage: React.FC = () => {
       }));
      
       console.log(orderData);
-      const response = await axios.post('http://localhost:4000/orders/createOrder', orderData);
+      const response = await api.post('/orders/createOrder', orderData);
       console.log(response.data); // You can handle the response as needed
       setOrderSuccess(true); // Set order success state to true
       setCartItems([]); // Clear the cart items
