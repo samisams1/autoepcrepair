@@ -50,8 +50,10 @@ const CartPage: React.FC = () => {
     });
     setCartItems(updatedCartItems);
   };
-  const imageUrl = 'http://localhost:4000/';
+  //const imageUrl = 'http://localhost:4000/';
+  const imageUrl = 'https://test2.nilesoftdemo.com/'
 
+  
   return (
     <CartContainer>
       <CartTitle>Your Cart</CartTitle>
